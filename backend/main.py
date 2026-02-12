@@ -6,7 +6,7 @@ import pandas as pd
 import uuid
 import os
 
-from .extractor import extract_financial_tables_fast, format_financial_excel
+from extractor import extract_financial_tables_fast, format_financial_excel
 
 app = FastAPI()
 
