@@ -11,7 +11,7 @@ from .extractor import extract_financial_tables_fast, format_financial_excel
 app = FastAPI()
 
 STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
-app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+app.mount("/static", StaticFiles(directory="backend/static"), name="static")
 
 app.add_middleware(
     CORSMiddleware,
@@ -31,7 +31,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 @app.get("/")
 async def serve_frontend():
-    return FileResponse(os.path.join(STATIC_DIR, "index.html"))
+    return FileResponse(os.path.join("backend", "static", "index.html"))
 
 @app.post("/upload")
 async def upload_pdf(file: UploadFile = File(...)):
