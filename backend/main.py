@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile, File
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 import pandas as pd
@@ -8,6 +9,8 @@ import os
 from .extractor import extract_financial_tables_fast, format_financial_excel
 
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="backend/static"), name="static")
 
 app.add_middleware(
     CORSMiddleware,
@@ -24,6 +27,10 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "outputs")
 
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+@app.get("/")
+async def serve_frontend():
+    return FileResponse("backend/static/index.html")
 
 @app.post("/upload")
 async def upload_pdf(file: UploadFile = File(...)):
