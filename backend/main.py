@@ -31,8 +31,13 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 @app.get("/")
 async def serve_frontend():
-    file_path = os.path.join(os.getcwd(), "backend", "static", "index.html")
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(current_dir, "static", "index.html")
     return FileResponse(file_path)
+
+@app.get("/test")
+def test():
+    return {"status": "working"}
 
 @app.post("/upload")
 async def upload_pdf(file: UploadFile = File(...)):
