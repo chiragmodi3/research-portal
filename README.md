@@ -6,6 +6,10 @@
 - Pandas
 - OpenPyXL
 
+## Financial Research Portal
+- The Financial Research Portal is a web-based tool that extracts structured financial data from uploaded PDF financial statements and converts them into analyst-ready Excel sheets.
+- The application focuses on reliability and usability, allowing evaluators to upload a document and immediately generate a formatted Excel output.
+
 ## 🌐 Public Deployment
 
 The application is deployed using Render (Free Tier):
