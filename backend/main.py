@@ -35,10 +35,6 @@ async def serve_frontend():
     file_path = os.path.join(current_dir, "static", "index.html")
     return FileResponse(file_path)
 
-@app.get("/test")
-def test():
-    return {"status": "working"}
-
 @app.post("/upload")
 async def upload_pdf(file: UploadFile = File(...)):
 

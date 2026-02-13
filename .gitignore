@@ -1,2 +1,19 @@
-# Backend
-./venv
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+
+# FastAPI / Server
+*.log
+
+# Uploads & Outputs (IMPORTANT)
+uploads/
+outputs/
+
+# Render Cache
+.render/
